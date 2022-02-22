@@ -11,7 +11,25 @@ struct CharactersView: View {
     @EnvironmentObject var homeData: HomeViewModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 15) {
+                    //Search bar ...
+                    HStack(spacing: 10) {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray)
+                        TextField("Search Character", text: $homeData.searchQuery)
+                    }
+                    .padding(.vertical, 10)
+                    .padding(.horizontal)
+                    .background(.white)
+                    .shadow(color: .black.opacity(0.06), radius: 5, x: 5, y: 5)
+                    .shadow(color: .black.opacity(0.06), radius: 5, x: -5, y: -5)
+                }
+                .padding()
+            }
+            .navigationTitle("Marvel")
+        }
     }
 }
 
