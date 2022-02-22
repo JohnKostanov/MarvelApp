@@ -11,6 +11,11 @@
 		E1CAA88527C50DA2003E9B85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAA88427C50DA2003E9B85 /* ContentView.swift */; };
 		E1CAA88727C50DA3003E9B85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CAA88627C50DA3003E9B85 /* Assets.xcassets */; };
 		E1CAA88A27C50DA3003E9B85 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CAA88927C50DA3003E9B85 /* Preview Assets.xcassets */; };
+		E1CAA89227C50EBF003E9B85 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1CAA89127C50EBF003E9B85 /* SDWebImageSwiftUI */; };
+		E1CAA89427C51659003E9B85 /* MarvelKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAA89327C51659003E9B85 /* MarvelKeys.swift */; };
+		E1CAA89927C517F5003E9B85 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAA89827C517F5003E9B85 /* Home.swift */; };
+		E1CAA89B27C518FB003E9B85 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAA89A27C518FB003E9B85 /* HomeViewModel.swift */; };
+		E1CAA89D27C51A09003E9B85 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAA89C27C51A09003E9B85 /* CharactersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,10 @@
 		E1CAA88427C50DA2003E9B85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1CAA88627C50DA3003E9B85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1CAA88927C50DA3003E9B85 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E1CAA89327C51659003E9B85 /* MarvelKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelKeys.swift; sourceTree = "<group>"; };
+		E1CAA89827C517F5003E9B85 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		E1CAA89A27C518FB003E9B85 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E1CAA89C27C51A09003E9B85 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CAA89227C50EBF003E9B85 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +61,12 @@
 		E1CAA88127C50DA2003E9B85 /* SwiftUIMarvelApi */ = {
 			isa = PBXGroup;
 			children = (
+				E1CAA89727C51787003E9B85 /* ViewModel */,
+				E1CAA89627C5177F003E9B85 /* Model */,
+				E1CAA89527C51779003E9B85 /* View */,
 				E1CAA88227C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift */,
 				E1CAA88427C50DA2003E9B85 /* ContentView.swift */,
+				E1CAA89327C51659003E9B85 /* MarvelKeys.swift */,
 				E1CAA88627C50DA3003E9B85 /* Assets.xcassets */,
 				E1CAA88827C50DA3003E9B85 /* Preview Content */,
 			);
@@ -65,6 +79,30 @@
 				E1CAA88927C50DA3003E9B85 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E1CAA89527C51779003E9B85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1CAA89827C517F5003E9B85 /* Home.swift */,
+				E1CAA89C27C51A09003E9B85 /* CharactersView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1CAA89627C5177F003E9B85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1CAA89727C51787003E9B85 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1CAA89A27C518FB003E9B85 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +121,9 @@
 			dependencies = (
 			);
 			name = SwiftUIMarvelApi;
+			packageProductDependencies = (
+				E1CAA89127C50EBF003E9B85 /* SDWebImageSwiftUI */,
+			);
 			productName = SwiftUIMarvelApi;
 			productReference = E1CAA87F27C50DA2003E9B85 /* SwiftUIMarvelApi.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +152,9 @@
 				Base,
 			);
 			mainGroup = E1CAA87627C50DA2003E9B85;
+			packageReferences = (
+				E1CAA89027C50EBF003E9B85 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = E1CAA88027C50DA2003E9B85 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,7 +181,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CAA89427C51659003E9B85 /* MarvelKeys.swift in Sources */,
 				E1CAA88527C50DA2003E9B85 /* ContentView.swift in Sources */,
+				E1CAA89D27C51A09003E9B85 /* CharactersView.swift in Sources */,
+				E1CAA89927C517F5003E9B85 /* Home.swift in Sources */,
+				E1CAA89B27C518FB003E9B85 /* HomeViewModel.swift in Sources */,
 				E1CAA88327C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +389,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1CAA89027C50EBF003E9B85 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1CAA89127C50EBF003E9B85 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1CAA89027C50EBF003E9B85 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E1CAA87727C50DA2003E9B85 /* Project object */;
 }
