@@ -61,10 +61,10 @@
 		E1CAA88127C50DA2003E9B85 /* SwiftUIMarvelApi */ = {
 			isa = PBXGroup;
 			children = (
+				E1CAA89E27C51CE4003E9B85 /* App */,
 				E1CAA89727C51787003E9B85 /* ViewModel */,
 				E1CAA89627C5177F003E9B85 /* Model */,
 				E1CAA89527C51779003E9B85 /* View */,
-				E1CAA88227C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift */,
 				E1CAA88427C50DA2003E9B85 /* ContentView.swift */,
 				E1CAA89327C51659003E9B85 /* MarvelKeys.swift */,
 				E1CAA88627C50DA3003E9B85 /* Assets.xcassets */,
@@ -103,6 +103,14 @@
 				E1CAA89A27C518FB003E9B85 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1CAA89E27C51CE4003E9B85 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E1CAA88227C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
