@@ -20,6 +20,10 @@ class HomeViewModel: ObservableObject {
     // Fetched Data...
     @Published var fetchedCharacters: [Character]? = nil
     
+    @Published var fetchedComics: [Comic] = []
+    
+    @Published var offset: Int = 0
+    
     init() {
         // since SwiftUI uses @published so its a publisher...
         // so we dont need to explicity define publisher...
@@ -43,7 +47,7 @@ class HomeViewModel: ObservableObject {
         let ts = String(Date().timeIntervalSince1970)
         let hash = MD5(data: "\(ts)\(Marvel.privateKey)\(Marvel.publicKey)")
         let originalQuery = searchQuery.replacingOccurrences(of: " ", with: "%20")
-        let url = "\(Marvel.serverURL)\(Marvel.requestURL)?nameStartsWith=\(originalQuery)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
+        let url = "\(Marvel.serverURL)\(Marvel.requestCharacters)?nameStartsWith=\(originalQuery)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
         
         let session = URLSession(configuration: .default)
         
@@ -70,6 +74,44 @@ class HomeViewModel: ObservableObject {
                     if self.fetchedCharacters == nil {
                         self.fetchedCharacters = characters.data.results
                     }
+                }
+            }
+            catch {
+                print(#line, error.localizedDescription)
+                print(url)
+            }
+        }
+        .resume()
+    }
+    
+    func fetchComics() {
+        let ts = String(Date().timeIntervalSince1970)
+        let hash = MD5(data: "\(ts)\(Marvel.privateKey)\(Marvel.publicKey)")
+        let url = "\(Marvel.serverURL)\(Marvel.requestComics)?limit=20&offset=\(offset)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
+        
+        let session = URLSession(configuration: .default)
+        
+        guard let urlValid = URL(string: url) else {
+            print(#line, "URL no valid" )
+            return
+        }
+        
+        session.dataTask(with: urlValid) { data, _, error in
+            if let error = error {
+                print(#line, error.localizedDescription)
+                return
+            }
+            
+            guard let dataAPI = data else {
+                print("no data found")
+                
+                return
+            }
+            do {
+                // Decoding Api data...
+                let comics = try JSONDecoder().decode(APIComicResult.self, from: dataAPI)
+                DispatchQueue.main.async {
+                    self.fetchedComics.append(contentsOf: comics.data.results)
                 }
             }
             catch {
