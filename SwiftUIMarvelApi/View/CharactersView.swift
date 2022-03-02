@@ -19,6 +19,8 @@ struct CharactersView: View {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.gray)
                         TextField("Search Character", text: $homeData.searchQuery)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
                     }
                     .padding(.vertical, 10)
                     .padding(.horizontal)
@@ -27,6 +29,25 @@ struct CharactersView: View {
                     .shadow(color: .black.opacity(0.06), radius: 5, x: -5, y: -5)
                 }
                 .padding()
+                if let characters = homeData.fetchedCharacters {
+                    if characters.isEmpty {
+                        // No results...
+                        Text("No found results")
+                            .padding(.top, 20)
+                    } else {
+                        // Displaying results
+                        ForEach(characters) { data in
+                            Text(data.name)
+                        }
+                    }
+                } else {
+                    if homeData.searchQuery != "" {
+                        // Loading wait...
+                        ProgressView()
+                            .padding(.top, 20)
+                    }
+                   
+                }
             }
             .navigationTitle("Marvel")
         }
