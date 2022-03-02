@@ -20,6 +20,15 @@ struct Character: Identifiable, Codable {
     var id: Int
     var name: String
     var description: String
-    var thumbnail: [String: String]
+    var thumbnail: ImageURL
     var urls: [[String: String]]
+    
+    var smallImagePath: String {
+        "\(thumbnail.path)/landscape_small.\(thumbnail.extension)"
+    }
+    
+    struct ImageURL: Codable {
+        let path: String
+        let `extension`: String
+    }
 }
