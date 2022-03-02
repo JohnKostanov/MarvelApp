@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CharactersView: View {
     @EnvironmentObject var homeData: HomeViewModel
@@ -37,7 +38,7 @@ struct CharactersView: View {
                     } else {
                         // Displaying results
                         ForEach(characters) { data in
-                            Text(data.name)
+                            CharacterRowView(character: data)
                         }
                     }
                 } else {
@@ -46,7 +47,6 @@ struct CharactersView: View {
                         ProgressView()
                             .padding(.top, 20)
                     }
-                   
                 }
             }
             .navigationTitle("Marvel")
@@ -57,5 +57,30 @@ struct CharactersView: View {
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct CharacterRowView: View {
+    var character: Character
+    
+    var body: some View {
+        HStack(alignment: .top, spacing: 30) {
+            WebImage(url: URL(string: character.smallImagePath))
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 150, height: 150)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(character.name)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                Text(character.description)
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .lineLimit(4)
+                    .multilineTextAlignment(.leading)
+            }
+            Spacer(minLength: 0)
+        }
     }
 }
