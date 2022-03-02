@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E118BAA027CE354700EEEA7E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118BA9F27CE354700EEEA7E /* Character.swift */; };
 		E118BAA627CFD1DF00EEEA7E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118BAA527CFD1DF00EEEA7E /* WebView.swift */; };
+		E118BAA827CFDDDB00EEEA7E /* ComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118BAA727CFDDDB00EEEA7E /* ComicsView.swift */; };
+		E118BAAA27CFDE3500EEEA7E /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E118BAA927CFDE3500EEEA7E /* Comic.swift */; };
 		E1CAA88327C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAA88227C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift */; };
 		E1CAA88527C50DA2003E9B85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAA88427C50DA2003E9B85 /* ContentView.swift */; };
 		E1CAA88727C50DA3003E9B85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CAA88627C50DA3003E9B85 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		E118BA9F27CE354700EEEA7E /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		E118BAA327CFABF500EEEA7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E118BAA527CFD1DF00EEEA7E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		E118BAA727CFDDDB00EEEA7E /* ComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsView.swift; sourceTree = "<group>"; };
+		E118BAA927CFDE3500EEEA7E /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		E1CAA87F27C50DA2003E9B85 /* SwiftUIMarvelApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIMarvelApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CAA88227C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIMarvelApiApp.swift; sourceTree = "<group>"; };
 		E1CAA88427C50DA2003E9B85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,8 +80,8 @@
 			children = (
 				E1CAA88827C50DA3003E9B85 /* Preview Content */,
 				E1CAA89E27C51CE4003E9B85 /* App */,
-				E1CAA89727C51787003E9B85 /* ViewModel */,
 				E1CAA89627C5177F003E9B85 /* Model */,
+				E1CAA89727C51787003E9B85 /* ViewModel */,
 				E1CAA89527C51779003E9B85 /* View */,
 			);
 			path = SwiftUIMarvelApi;
@@ -95,8 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				E1CAA89827C517F5003E9B85 /* Home.swift */,
-				E1CAA89C27C51A09003E9B85 /* CharactersView.swift */,
 				E118BAA527CFD1DF00EEEA7E /* WebView.swift */,
+				E1CAA89C27C51A09003E9B85 /* CharactersView.swift */,
+				E118BAA727CFDDDB00EEEA7E /* ComicsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -105,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				E118BA9F27CE354700EEEA7E /* Character.swift */,
+				E118BAA927CFDE3500EEEA7E /* Comic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,9 +214,11 @@
 				E1CAA89427C51659003E9B85 /* Marvel.swift in Sources */,
 				E118BAA627CFD1DF00EEEA7E /* WebView.swift in Sources */,
 				E1CAA88527C50DA2003E9B85 /* ContentView.swift in Sources */,
+				E118BAA827CFDDDB00EEEA7E /* ComicsView.swift in Sources */,
 				E118BAA027CE354700EEEA7E /* Character.swift in Sources */,
 				E1CAA89D27C51A09003E9B85 /* CharactersView.swift in Sources */,
 				E1CAA89927C517F5003E9B85 /* Home.swift in Sources */,
+				E118BAAA27CFDE3500EEEA7E /* Comic.swift in Sources */,
 				E1CAA89B27C518FB003E9B85 /* HomeViewModel.swift in Sources */,
 				E1CAA88327C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift in Sources */,
 			);
