@@ -19,9 +19,7 @@ class HomeViewModel: ObservableObject {
     
     // Fetched Data...
     @Published var fetchedCharacters: [Character]? = nil
-    
     @Published var fetchedComics: [Comic] = []
-    
     @Published var offset: Int = 0
     
     init() {
@@ -30,7 +28,7 @@ class HomeViewModel: ObservableObject {
         searchCancellable = $searchQuery
         // removing duplicate typings...
             .removeDuplicates()
-            // we dont need to fetch for every typing.
+        // we dont need to fetch for every typing.
             .debounce(for: 0.6, scheduler: RunLoop.main)
             .sink(receiveValue: { str in
                 if str == "" {
@@ -63,10 +61,10 @@ class HomeViewModel: ObservableObject {
             }
             
             guard let dataAPI = data else {
-                print("no data found")
-                
+                print(#line, "no data found")
                 return
             }
+            
             do {
                 // Decoding Api data...
                 let characters = try JSONDecoder().decode(APIResult.self, from: dataAPI)
@@ -75,10 +73,8 @@ class HomeViewModel: ObservableObject {
                         self.fetchedCharacters = characters.data.results
                     }
                 }
-            }
-            catch {
+            } catch {
                 print(#line, error.localizedDescription)
-                print(url)
             }
         }
         .resume()
@@ -103,18 +99,17 @@ class HomeViewModel: ObservableObject {
             }
             
             guard let dataAPI = data else {
-                print("no data found")
-                
+                print(#line, "no data found")
                 return
             }
+            
             do {
                 // Decoding Api data...
                 let comics = try JSONDecoder().decode(APIComicResult.self, from: dataAPI)
                 DispatchQueue.main.async {
                     self.fetchedComics.append(contentsOf: comics.data.results)
                 }
-            }
-            catch {
+            } catch {
                 print(#line, error.localizedDescription)
                 print(url)
             }

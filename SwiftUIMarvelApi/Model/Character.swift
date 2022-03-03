@@ -5,8 +5,6 @@
 //  Created by Джон Костанов on 1/3/22.
 //
 
-
-// Model
 struct APIResult: Codable {
     var data: APICharacterData
 }
