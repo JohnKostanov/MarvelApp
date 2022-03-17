@@ -63,6 +63,59 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		E1B842BF27E34EBD0048CF36 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				E118BAA527CFD1DF00EEEA7E /* WebView.swift */,
+				E1CAA89327C51659003E9B85 /* Marvel.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		E1B842C027E34EEF0048CF36 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				E1CAA89527C51779003E9B85 /* View */,
+				E1CAA89727C51787003E9B85 /* ViewModel */,
+				E1CAA89627C5177F003E9B85 /* Model */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		E1B842C127E34F0F0048CF36 /* Comics */ = {
+			isa = PBXGroup;
+			children = (
+				E1B842C427E350060048CF36 /* View */,
+				E1B842C327E34FE70048CF36 /* ViewModel */,
+				E1B842C227E34FD50048CF36 /* Model */,
+			);
+			path = Comics;
+			sourceTree = "<group>";
+		};
+		E1B842C227E34FD50048CF36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E118BAA927CFDE3500EEEA7E /* Comic.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1B842C327E34FE70048CF36 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1B842C427E350060048CF36 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E118BAA727CFDDDB00EEEA7E /* ComicsView.swift */,
+				E154629A27D0D6C000777237 /* ComicRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E1CAA87627C50DA2003E9B85 = {
 			isa = PBXGroup;
 			children = (
@@ -82,11 +135,11 @@
 		E1CAA88127C50DA2003E9B85 /* SwiftUIMarvelApi */ = {
 			isa = PBXGroup;
 			children = (
-				E1CAA88827C50DA3003E9B85 /* Preview Content */,
 				E1CAA89E27C51CE4003E9B85 /* App */,
-				E1CAA89627C5177F003E9B85 /* Model */,
-				E1CAA89727C51787003E9B85 /* ViewModel */,
-				E1CAA89527C51779003E9B85 /* View */,
+				E1B842BF27E34EBD0048CF36 /* NetworkLayer */,
+				E1B842C027E34EEF0048CF36 /* Characters */,
+				E1B842C127E34F0F0048CF36 /* Comics */,
+				E1CAA88827C50DA3003E9B85 /* Preview Content */,
 			);
 			path = SwiftUIMarvelApi;
 			sourceTree = "<group>";
@@ -102,12 +155,8 @@
 		E1CAA89527C51779003E9B85 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E1CAA89827C517F5003E9B85 /* Home.swift */,
-				E118BAA527CFD1DF00EEEA7E /* WebView.swift */,
 				E1CAA89C27C51A09003E9B85 /* CharactersView.swift */,
 				E154629827D0D62000777237 /* CharacterRowView.swift */,
-				E118BAA727CFDDDB00EEEA7E /* ComicsView.swift */,
-				E154629A27D0D6C000777237 /* ComicRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				E118BA9F27CE354700EEEA7E /* Character.swift */,
-				E118BAA927CFDE3500EEEA7E /* Comic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,7 +183,7 @@
 				E118BAA427CFC8C600EEEA7E /* Config */,
 				E1CAA88227C50DA2003E9B85 /* SwiftUIMarvelApiApp.swift */,
 				E1CAA88427C50DA2003E9B85 /* ContentView.swift */,
-				E1CAA89327C51659003E9B85 /* Marvel.swift */,
+				E1CAA89827C517F5003E9B85 /* Home.swift */,
 				E1CAA88627C50DA3003E9B85 /* Assets.xcassets */,
 			);
 			path = App;
