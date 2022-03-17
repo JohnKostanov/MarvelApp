@@ -8,35 +8,35 @@
 import SwiftUI
 
 struct ComicsView: View {
-    @EnvironmentObject var homeData: HomeViewModel
+    @EnvironmentObject var comicData: ComicViewModel
     
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                if homeData.fetchedComics.isEmpty {
+                if comicData.fetchedComics.isEmpty {
                     ProgressView()
                         .padding(.top, 30)
                 } else {
                     // Displaying contents...
                     VStack(spacing: 15) {
-                        ForEach(homeData.fetchedComics) { comic in
+                        ForEach(comicData.fetchedComics) { comic in
                             ComicRowView(comic: comic)
                         }
-                        if homeData.offset == homeData.fetchedComics.count {
+                        if comicData.offset == comicData.fetchedComics.count {
                             ProgressView()
                                 .padding(.vertical)
                                 .onAppear {
                                     print("fething new data")
-                                    homeData.fetchComics()
+                                    comicData.fetchComics()
                                 }
                         } else {
                             GeometryReader { reader -> Color in
                                 let minY = reader.frame(in: .global).minY
                                 let height = UIScreen.main.bounds.height / 1.3
                                 
-                                if !homeData.fetchedComics.isEmpty && minY < height {
+                                if !comicData.fetchedComics.isEmpty && minY < height {
                                     DispatchQueue.main.async {
-                                        homeData.offset = homeData.fetchedComics.count
+                                        comicData.offset = comicData.fetchedComics.count
                                     }
                                 }
                                 return Color.clear
@@ -50,8 +50,8 @@ struct ComicsView: View {
             .navigationTitle("Marvel's Comics")
         }
         .onAppear {
-            if homeData.fetchedComics.isEmpty {
-                homeData.fetchComics()
+            if comicData.fetchedComics.isEmpty {
+                comicData.fetchComics()
             }
         }
     }
