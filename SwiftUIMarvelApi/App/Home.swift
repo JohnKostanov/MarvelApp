@@ -9,7 +9,8 @@ import SwiftUI
 
 struct Home: View {
     
-    @StateObject var homeData = HomeViewModel()
+    @StateObject var characterData = CharacterViewModel()
+    @StateObject var comicData = ComicViewModel()
     
     var body: some View {
         TabView {
@@ -25,7 +26,8 @@ struct Home: View {
                     Text("Comics")
                 }
         }
-        .environmentObject(homeData)
+        .environmentObject(characterData)
+        .environmentObject(comicData)
     }
 }
 
