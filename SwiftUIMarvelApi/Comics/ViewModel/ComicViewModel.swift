@@ -10,7 +10,7 @@ import SwiftUI
 class ComicViewModel: ComicReader {
     
     override func fetchComics() {
-        Request.fetchComics(offset: offset, fetchedComics: &fetchedComics) { comics in
+        RequestComic.fetch(offset: offset, fetchedComics: &fetchedComics) { comics in
             self.fetchedComics.append(contentsOf: comics)
         }
     }

@@ -5,15 +5,6 @@
 //  Created by Джон Костанов on 2/3/22.
 //
 
-struct APIComicResult: Codable {
-    var data: APIComicData
-}
-
-struct APIComicData: Codable {
-    var count: Int
-    var results: [Comic]
-}
-
 struct Comic: Identifiable, Codable, ComicProtocol {
     var id: Int
     var title: String

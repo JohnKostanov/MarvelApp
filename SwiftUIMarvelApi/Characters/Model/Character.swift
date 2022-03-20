@@ -5,15 +5,6 @@
 //  Created by Джон Костанов on 1/3/22.
 //
 
-struct APIResult: Codable {
-    var data: APICharacterData
-}
-
-struct APICharacterData: Codable {
-    var count: Int
-    var results: [Character]
-}
-
 struct Character: CharacterProtocol, Codable, Identifiable {
     var id: Int
     var name: String
