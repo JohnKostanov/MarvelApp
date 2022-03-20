@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ComicRowView: View {
-    var comic: Comic
+    let comic: ComicProtocol
     
     var body: some View {
         HStack(alignment: .top, spacing: 15) {

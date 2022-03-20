@@ -14,7 +14,7 @@ struct APIComicData: Codable {
     var results: [Comic]
 }
 
-struct Comic: Identifiable, Codable {
+struct Comic: Identifiable, Codable, ComicProtocol {
     var id: Int
     var title: String
     var description: String?

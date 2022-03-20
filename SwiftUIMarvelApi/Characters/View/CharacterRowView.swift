@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct CharacterRowView: View {
-    var character: Character
+    let character: CharacterProtocol
     
     var body: some View {
         HStack(alignment: .top, spacing: 15) {

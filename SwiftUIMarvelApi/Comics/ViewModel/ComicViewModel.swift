@@ -10,7 +10,7 @@ import Combine
 
 class ComicViewModel: ObservableObject {
     
-    @Published var fetchedComics: [Comic] = []
+    @Published var fetchedComics: [ComicProtocol] = []
     @Published var offset: Int = 0
     
     func fetchComics() {

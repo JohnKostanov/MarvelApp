@@ -27,7 +27,7 @@ class Request {
         return url
     }
     
-    static func searchHaracter(searchQuery: String, fetchedCharacters: [Character], completion: @escaping ([Character]) -> Void) {
+    static func searchHaracter(searchQuery: String, fetchedCharacters: [CharacterProtocol], completion: @escaping ([CharacterProtocol]) -> Void) {
         
         let url = createURLForSearch(searchQuery: searchQuery)
         
@@ -64,7 +64,7 @@ class Request {
         .resume()
     }
     
-    static func fetchComics(offset: Int, fetchedComics: inout [Comic], completion: @escaping ([Comic]) -> Void) {
+    static func fetchComics(offset: Int, fetchedComics: inout [ComicProtocol], completion: @escaping ([ComicProtocol]) -> Void) {
        
         let url = createURLForComics(offset: offset)
         let session = URLSession(configuration: .default)

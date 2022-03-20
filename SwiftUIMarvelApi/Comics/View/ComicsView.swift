@@ -19,7 +19,7 @@ struct ComicsView: View {
                 } else {
                     // Displaying contents...
                     VStack(spacing: 15) {
-                        ForEach(comicData.fetchedComics) { comic in
+                        ForEach(comicData.fetchedComics, id: \.id) { comic in
                             ComicRowView(comic: comic)
                         }
                         if comicData.offset == comicData.fetchedComics.count {
