@@ -10,11 +10,26 @@ import CryptoKit
 
 class Request {
     
-    static func searchHaracter(searchQuery: String, fetchedCharacters: [Character], completion: @escaping ([Character]) -> Void) {
+    static func createURLForSearch(searchQuery: String) -> String {
         let ts = String(Date().timeIntervalSince1970)
         let hash = MD5(data: "\(ts)\(Marvel.privateKey)\(Marvel.publicKey)")
         let originalQuery = searchQuery.replacingOccurrences(of: " ", with: "%20")
         let url = "\(Marvel.serverURL)\(Marvel.requestCharacters)?nameStartsWith=\(originalQuery)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
+        
+        return url
+    }
+    
+    static func createURLForComics(offset: Int) -> String {
+        let ts = String(Date().timeIntervalSince1970)
+        let hash = MD5(data: "\(ts)\(Marvel.privateKey)\(Marvel.publicKey)")
+        let url = "\(Marvel.serverURL)\(Marvel.requestComics)?limit=20&offset=\(offset)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
+        
+        return url
+    }
+    
+    static func searchHaracter(searchQuery: String, fetchedCharacters: [Character], completion: @escaping ([Character]) -> Void) {
+        
+        let url = createURLForSearch(searchQuery: searchQuery)
         
         let session = URLSession(configuration: .default)
         
@@ -50,10 +65,8 @@ class Request {
     }
     
     static func fetchComics(offset: Int, fetchedComics: inout [Comic], completion: @escaping ([Comic]) -> Void) {
-        let ts = String(Date().timeIntervalSince1970)
-        let hash = MD5(data: "\(ts)\(Marvel.privateKey)\(Marvel.publicKey)")
-        let url = "\(Marvel.serverURL)\(Marvel.requestComics)?limit=20&offset=\(offset)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
-        
+       
+        let url = createURLForComics(offset: offset)
         let session = URLSession(configuration: .default)
         
         guard let urlValid = URL(string: url) else {
