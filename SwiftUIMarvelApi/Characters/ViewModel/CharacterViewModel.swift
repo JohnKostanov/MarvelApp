@@ -20,7 +20,7 @@ class CharacterViewModel: CharacterReader {
                     self.fetchedCharacters = []
                 } else {
                     // search Data...
-                    Request.searchHaracter(searchQuery: self.searchQuery, fetchedCharacters: self.fetchedCharacters) { characters in
+                    RequestCharacter.fetch(searchQuery: self.searchQuery, fetchedCharacters: self.fetchedCharacters) { characters in
                         self.fetchedCharacters = characters
                     }
                 }
