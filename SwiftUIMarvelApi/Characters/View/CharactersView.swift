@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CharactersView: View {
-    @EnvironmentObject var characterData: CharacterViewModel
+    @ObservedObject var data: CharacterReader
     
     var body: some View {
         NavigationView {
@@ -18,7 +18,7 @@ struct CharactersView: View {
                     HStack(spacing: 10) {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.gray)
-                        TextField("Search Character", text: $characterData.searchQuery)
+                        TextField("Search Character", text: $data.searchQuery)
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
                     }
@@ -29,7 +29,7 @@ struct CharactersView: View {
                     .shadow(color: .black.opacity(0.06), radius: 5, x: -5, y: -5)
                 }
                 .padding()
-                if let characters = characterData.fetchedCharacters {
+                if let characters = data.fetchedCharacters {
                     if characters.isEmpty {
                         // No results...
                         Text("No found results")
@@ -41,7 +41,7 @@ struct CharactersView: View {
                         }
                     }
                 } else {
-                    if characterData.searchQuery != "" {
+                    if data.searchQuery != "" {
                         // Loading wait...
                         ProgressView()
                             .padding(.top, 20)

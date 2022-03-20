@@ -9,25 +9,20 @@ import SwiftUI
 
 struct Home: View {
     
-    @StateObject var characterData = CharacterViewModel()
-    @StateObject var comicData = ComicViewModel()
-    
     var body: some View {
         TabView {
-            CharactersView()
+            CharactersView(data: CharacterViewModel())
                 .tabItem {
                     Image(systemName: "person.3.fill")
                     Text("Characters")
                 }
             
-            ComicsView()
+            ComicsView(data: ComicViewModel())
                 .tabItem {
                     Image(systemName: "books.vertical.fill")
                     Text("Comics")
                 }
         }
-        .environmentObject(characterData)
-        .environmentObject(comicData)
     }
 }
 

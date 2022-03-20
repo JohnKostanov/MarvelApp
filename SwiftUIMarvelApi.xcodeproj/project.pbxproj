@@ -26,6 +26,8 @@
 		E1CAA89D27C51A09003E9B85 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CAA89C27C51A09003E9B85 /* CharactersView.swift */; };
 		E1F381B927E766270008EF31 /* ChatacterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F381B827E766270008EF31 /* ChatacterProtocol.swift */; };
 		E1F381BB27E76CEF0008EF31 /* ComicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F381BA27E76CEF0008EF31 /* ComicProtocol.swift */; };
+		E1F381BD27E784250008EF31 /* CharacterReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F381BC27E784250008EF31 /* CharacterReader.swift */; };
+		E1F381BF27E785BB0008EF31 /* ComicReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F381BE27E785BB0008EF31 /* ComicReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		E1CAA89C27C51A09003E9B85 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		E1F381B827E766270008EF31 /* ChatacterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatacterProtocol.swift; sourceTree = "<group>"; };
 		E1F381BA27E76CEF0008EF31 /* ComicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicProtocol.swift; sourceTree = "<group>"; };
+		E1F381BC27E784250008EF31 /* CharacterReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterReader.swift; sourceTree = "<group>"; };
+		E1F381BE27E785BB0008EF31 /* ComicReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +209,8 @@
 			children = (
 				E1F381B827E766270008EF31 /* ChatacterProtocol.swift */,
 				E1F381BA27E76CEF0008EF31 /* ComicProtocol.swift */,
+				E1F381BC27E784250008EF31 /* CharacterReader.swift */,
+				E1F381BE27E785BB0008EF31 /* ComicReader.swift */,
 			);
 			path = Protocoles;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 			files = (
 				E154629927D0D62100777237 /* CharacterRowView.swift in Sources */,
 				E1B842C627E353690048CF36 /* Request.swift in Sources */,
+				E1F381BF27E785BB0008EF31 /* ComicReader.swift in Sources */,
 				E1CAA89427C51659003E9B85 /* Marvel.swift in Sources */,
 				E118BAA627CFD1DF00EEEA7E /* WebView.swift in Sources */,
 				E1CAA88527C50DA2003E9B85 /* ContentView.swift in Sources */,
@@ -294,6 +301,7 @@
 				E118BAA027CE354700EEEA7E /* Character.swift in Sources */,
 				E1F381B927E766270008EF31 /* ChatacterProtocol.swift in Sources */,
 				E1CAA89D27C51A09003E9B85 /* CharactersView.swift in Sources */,
+				E1F381BD27E784250008EF31 /* CharacterReader.swift in Sources */,
 				E1CAA89927C517F5003E9B85 /* Home.swift in Sources */,
 				E118BAAA27CFDE3500EEEA7E /* Comic.swift in Sources */,
 				E1F381BB27E76CEF0008EF31 /* ComicProtocol.swift in Sources */,

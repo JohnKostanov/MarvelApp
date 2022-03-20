@@ -6,27 +6,13 @@
 //
 
 import SwiftUI
-import Combine
 
-class CharacterViewModel: ObservableObject {
+class CharacterViewModel: CharacterReader {
     
-    @Published var searchQuery = ""
-    
-    // Combine Framework Search Bar...
-    // used to cancel the search publisher when ever we need...
-    var searchCancellable: AnyCancellable? = nil
-    
-    // Fetched Data...
-    @Published var fetchedCharacters: [CharacterProtocol] = []
-
-    
-    init() {
-        // since SwiftUI uses @published so its a publisher...
-        // so we dont need to explicity define publisher...
+    override init() {
+        super.init()
         searchCancellable = $searchQuery
-        // removing duplicate typings...
             .removeDuplicates()
-        // we dont need to fetch for every typing.
             .debounce(for: 0.6, scheduler: RunLoop.main)
             .sink(receiveValue: { str in
                 if str == "" {
