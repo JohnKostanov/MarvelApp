@@ -36,7 +36,7 @@ struct CharactersView: View {
                             .padding(.top, 20)
                     } else {
                         // Displaying results
-                        ForEach(characters) { data in
+                        ForEach(characters, id: \.id) { data in
                             CharacterRowView(character: data)
                         }
                     }

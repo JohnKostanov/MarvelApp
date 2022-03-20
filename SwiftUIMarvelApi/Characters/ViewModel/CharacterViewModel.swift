@@ -17,7 +17,7 @@ class CharacterViewModel: ObservableObject {
     var searchCancellable: AnyCancellable? = nil
     
     // Fetched Data...
-    @Published var fetchedCharacters: [Character] = []
+    @Published var fetchedCharacters: [CharacterProtocol] = []
 
     
     init() {
