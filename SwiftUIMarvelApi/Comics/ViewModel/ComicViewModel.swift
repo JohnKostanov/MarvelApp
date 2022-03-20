@@ -6,14 +6,10 @@
 //
 
 import SwiftUI
-import Combine
 
-class ComicViewModel: ObservableObject {
+class ComicViewModel: ComicReader {
     
-    @Published var fetchedComics: [ComicProtocol] = []
-    @Published var offset: Int = 0
-    
-    func fetchComics() {
+    override func fetchComics() {
         Request.fetchComics(offset: offset, fetchedComics: &fetchedComics) { comics in
             self.fetchedComics.append(contentsOf: comics)
         }
