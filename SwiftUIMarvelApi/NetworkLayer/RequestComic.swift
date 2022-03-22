@@ -9,8 +9,8 @@ import Foundation
 
 class RequestComic: RequestProtocol {
     
-    typealias APIResultData = APIResult<APIData<Comic>>
-    typealias Item = ComicProtocol
+    typealias APIResultData = APIResult<APIData<Character>>
+    typealias Item = RowProtocol
     typealias Settings = Int
     
     static func createURL(query: Settings) -> String {
@@ -54,7 +54,7 @@ class RequestComic: RequestProtocol {
         .resume()
     }
     
-    static func fetch(offset: Int, fetchedComics: inout [ComicProtocol], completion: @escaping ([ComicProtocol]) -> Void) {
+    static func fetch(offset: Int, fetchedComics: inout [RowProtocol], completion: @escaping ([RowProtocol]) -> Void) {
         let url = createURL(query: offset)
         fetchData(url: url, completion: completion)
     }

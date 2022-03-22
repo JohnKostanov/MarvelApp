@@ -13,16 +13,16 @@ struct ComicsView: View {
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                if data.fetchedComics.isEmpty {
+                if data.fetched.isEmpty {
                     ProgressView()
                         .padding(.top, 30)
                 } else {
                     // Displaying contents...
                     VStack(spacing: 15) {
-                        ForEach(data.fetchedComics, id: \.id) { comic in
-                            ComicRowView(comic: comic)
+                        ForEach(data.fetched, id: \.id) { comic in
+                            RowView(row: comic)
                         }
-                        if data.offset == data.fetchedComics.count {
+                        if data.offset == data.fetched.count {
                             ProgressView()
                                 .padding(.vertical)
                                 .onAppear {
@@ -34,9 +34,9 @@ struct ComicsView: View {
                                 let minY = reader.frame(in: .global).minY
                                 let height = UIScreen.main.bounds.height / 1.3
                                 
-                                if !data.fetchedComics.isEmpty && minY < height {
+                                if !data.fetched.isEmpty && minY < height {
                                     DispatchQueue.main.async {
-                                        data.offset = data.fetchedComics.count
+                                        data.offset = data.fetched.count
                                     }
                                 }
                                 return Color.clear
@@ -50,7 +50,7 @@ struct ComicsView: View {
             .navigationTitle("Marvel's Comics")
         }
         .onAppear {
-            if data.fetchedComics.isEmpty {
+            if data.fetched.isEmpty {
                 data.fetchComics()
             }
         }

@@ -5,10 +5,11 @@
 //  Created by Джон Костанов on 1/3/22.
 //
 
-struct Character: CharacterProtocol, Codable, Identifiable {
+struct Character: RowProtocol, Codable, Identifiable {
     var id: Int
-    var name: String
-    var description: String
+    var name: String?
+    var title: String?
+    var description: String?
     var thumbnail: ImageURL
     var urls: [[String: String]]
     

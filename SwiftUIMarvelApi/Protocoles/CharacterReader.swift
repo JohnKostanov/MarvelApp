@@ -14,5 +14,5 @@ class CharacterReader: ObservableObject {
     
     var searchCancellable: AnyCancellable? = nil
     
-    @Published var fetchedCharacters: [CharacterProtocol] = []    
+    @Published var fetched: [RowProtocol] = []    
 }

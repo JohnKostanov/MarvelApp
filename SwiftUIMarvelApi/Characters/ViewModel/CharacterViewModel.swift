@@ -17,11 +17,11 @@ class CharacterViewModel: CharacterReader {
             .sink(receiveValue: { str in
                 if str == "" {
                     // reset Data...
-                    self.fetchedCharacters = []
+                    self.fetched = []
                 } else {
                     // search Data...
-                    RequestCharacter.fetch(searchQuery: self.searchQuery, fetchedCharacters: self.fetchedCharacters) { characters in
-                        self.fetchedCharacters = characters
+                    RequestCharacter.fetch(searchQuery: self.searchQuery, fetchedCharacters: self.fetched) { characters in
+                        self.fetched = characters
                     }
                 }
             })
