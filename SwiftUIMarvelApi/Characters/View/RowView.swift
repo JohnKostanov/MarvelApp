@@ -1,5 +1,5 @@
 //
-//  ComicRowView.swift
+//  CharacterRowView.swift
 //  SwiftUIMarvelApi
 //
 //  Created by Джон Костанов on 3/3/22.
@@ -8,22 +8,29 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ComicRowView: View {
-    let comic: ComicProtocol
+struct RowView: View {
+    let row: RowProtocol
     
     var body: some View {
         HStack(alignment: .top, spacing: 15) {
-            WebImage(url: URL(string: comic.smallImagePath))
+            WebImage(url: URL(string: row.smallImagePath))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 150, height: 150)
                 .cornerRadius(8)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(comic.title)
-                    .font(.title3)
-                    .fontWeight(.bold)
-                if let description = comic.description {
+                if let name = row.name {
+                    Text(name)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                }
+                if let title = row.title {
+                    Text(title)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                }
+                if let description = row.description {
                     Text(description)
                         .font(.caption)
                         .foregroundColor(.gray)
@@ -33,7 +40,7 @@ struct ComicRowView: View {
                 
                 // Links
                 HStack(spacing: 10) {
-                    ForEach(comic.urls, id: \.self) { data in
+                    ForEach(row.urls, id: \.self) { data in
                         NavigationLink(destination: WebView(url: extractURL(data: data))
                                         .navigationTitle(extractURLType(data: data)),
                                        label: {

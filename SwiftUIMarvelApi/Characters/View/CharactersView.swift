@@ -29,15 +29,15 @@ struct CharactersView: View {
                     .shadow(color: .black.opacity(0.06), radius: 5, x: -5, y: -5)
                 }
                 .padding()
-                if let characters = data.fetchedCharacters {
+                if let characters = data.fetched {
                     if characters.isEmpty {
                         // No results...
                         Text("No found results")
                             .padding(.top, 20)
                     } else {
                         // Displaying results
-                        ForEach(characters, id: \.id) { data in
-                            CharacterRowView(character: data)
+                        ForEach(characters, id: \.id) { character in
+                            RowView(row: character)
                         }
                     }
                 } else {

@@ -10,7 +10,7 @@ import Foundation
 struct RequestCharacter: RequestProtocol {
     
     typealias APIResultData = APIResult<APIData<Character>>
-    typealias Item = CharacterProtocol
+    typealias Item = RowProtocol
     typealias Settings = String
     
     static func createURL(query: Settings) -> String {
@@ -55,7 +55,7 @@ struct RequestCharacter: RequestProtocol {
         .resume()
     }
     
-    static func fetch(searchQuery: String, fetchedCharacters: [Item], completion: @escaping ([CharacterProtocol]) -> Void) {
+    static func fetch(searchQuery: String, fetchedCharacters: [Item], completion: @escaping ([RowProtocol]) -> Void) {
         
         let url = createURL(query: searchQuery)
         fetchData(url: url, completion: completion)
