@@ -11,14 +11,15 @@ struct Character: RowProtocol, Codable, Identifiable {
     var title: String?
     var description: String?
     var thumbnail: ImageURL
+    var comics: Comics?
     var urls: [[String: String]]
-    
-    var smallImagePath: String {
-        "\(thumbnail.path)/landscape_small.\(thumbnail.extension)"
-    }
-    
-    struct ImageURL: Codable {
-        let path: String
-        let `extension`: String
-    }
+}
+
+struct ImageURL: Codable {
+    let path: String
+    let `extension`: String
+}
+
+struct Comics: Codable {
+    let available: Int
 }

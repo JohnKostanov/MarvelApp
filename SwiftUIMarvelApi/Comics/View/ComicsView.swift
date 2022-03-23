@@ -20,7 +20,12 @@ struct ComicsView: View {
                     // Displaying contents...
                     VStack(spacing: 15) {
                         ForEach(data.fetched, id: \.id) { comic in
-                            RowView(row: comic)
+                            NavigationLink {
+                                DetailView(data: comic)
+                            } label: {
+                                RowView(row: comic)
+                            }
+                            
                         }
                         if data.offset == data.fetched.count {
                             ProgressView()
