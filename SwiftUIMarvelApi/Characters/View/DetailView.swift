@@ -13,21 +13,19 @@ struct DetailView: View {
     var body: some View {
         VStack {
             ZStack {
-                AsyncImage(url: URL(string: data.largeImagePath)) { image in
-                    image.resizable()
-                    image.scaledToFill()
-                    image.aspectRatio(contentMode: .fill)
-                } placeholder: {
-                    ProgressView()
+                AsyncImage(url: URL(string: data.largeImagePath)) { phase in
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } else if phase.error != nil {
+                        Text("There was an error loading the image.")
+                    } else {
+                        ProgressView()
+                    }
                 }
-                .frame(minHeight: 200, maxHeight: .infinity, alignment: .center)
-                .clipped()
+                .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 400, idealHeight: 600, maxHeight: .infinity, alignment: .center)
                 .cornerRadius(8)
-                
-                Capsule()
-                    .foregroundColor(.black.opacity(0.4))
-                    .frame(width: 36, height: 5)
-                    .padding(.top, 8)
             }
             ScrollView(.vertical, showsIndicators: true) {
                 VStack(alignment: .leading, spacing: 0) {
@@ -37,32 +35,32 @@ struct DetailView: View {
                             .padding()
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    
                     if let comics = data.comics {
-                        Text("Комиксов: \(comics.available)")
+                        Text("Comics: \(comics.available)")
                             .padding(.bottom)
-                            .font(.subheadline)
+                            .font(.title3)
                     }
                     if let description = data.description {
                         Text(description.isEmpty ? "No description" : description)
                     }
-                    
+                    Spacer()
                     HStack(spacing: 10) {
                         ForEach(data.urls, id: \.self) { data in
-                            NavigationLink(destination: WebView(url: self.data.extractURL(data: data))
-                                            .navigationTitle(self.data.extractURLType(data: data)),
-                                           label: {
-                                Text(self.data.extractURLType(data: data))
-                                
-                            })
+                            NavigationLink {
+                                WebView(url: self.data.extractURL(data: data))
+                                    .navigationTitle(self.data.extractURLType(data: data))
+                            } label: {
+                                    Text(self.data.extractURLType(data: data))
+                            }
                         }
                     }
                 }
-                .padding(.horizontal)
+                .padding(.all)
+                .padding(.bottom, 80)
             }
         }
         .background(
-            VStack(spacing: 0) {
+            VStack {
                 if data.isImageExist {
                     AsyncImage(url: URL(string: data.largeImagePath)) { image in
                         image.blur(radius: 100)
@@ -86,7 +84,6 @@ struct DetailView: View {
         .ignoresSafeArea(edges: [.bottom])
     }
 }
-
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {

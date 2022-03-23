@@ -30,15 +30,21 @@ struct RowView: View {
                         .font(.title3)
                         .fontWeight(.bold)
                 }
+                if let comics = row.comics {
+                    Text("Comics: \(comics.available)")
+                        .padding(.bottom)
+                        .font(.title3)
+                        .foregroundColor(.black)
+                }
                 if let description = row.description {
                     Text(description)
                         .font(.caption)
                         .foregroundColor(.gray)
-                        .lineLimit(4)
+                        .lineLimit(3)
                         .multilineTextAlignment(.leading)
+                } else {
+                    Text("No description")
                 }
-                
-                
             }
             Spacer(minLength: 0)
         }
