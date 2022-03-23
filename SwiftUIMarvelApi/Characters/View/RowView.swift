@@ -38,31 +38,10 @@ struct RowView: View {
                         .multilineTextAlignment(.leading)
                 }
                 
-                // Links
-                HStack(spacing: 10) {
-                    ForEach(row.urls, id: \.self) { data in
-                        NavigationLink(destination: WebView(url: extractURL(data: data))
-                                        .navigationTitle(extractURLType(data: data)),
-                                       label: {
-                            Text(extractURLType(data: data))
-                        })
-                    }
-                }
+                
             }
             Spacer(minLength: 0)
         }
         .padding(.horizontal)
-    }
-    
-    func extractURL(data: [String: String]) -> URL {
-        let url = data["url"] ?? ""
-        
-        return URL(string: url)!
-    }
-    
-    func extractURLType(data: [String: String]) -> String {
-        let type = data["type"] ?? ""
-        
-        return type.capitalized
     }
 }

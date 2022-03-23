@@ -37,7 +37,12 @@ struct CharactersView: View {
                     } else {
                         // Displaying results
                         ForEach(characters, id: \.id) { character in
-                            RowView(row: character)
+                            NavigationLink {
+                                DetailView(data: character)
+                            } label: {
+                                RowView(row: character)
+                            }
+                            
                         }
                     }
                 } else {
@@ -49,6 +54,7 @@ struct CharactersView: View {
                 }
             }
             .navigationTitle("Marvel")
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
