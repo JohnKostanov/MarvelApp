@@ -29,39 +29,34 @@ struct CharactersView: View {
                     .shadow(color: .black.opacity(0.06), radius: 5, x: -5, y: -5)
                 }
                 .padding()
-                if let characters = data.fetched {
-                  if !characters.isEmpty {
-                        // Displaying results
-                        ForEach(characters, id: \.id) { character in
-                            NavigationLink {
-                                DetailView(data: character)
-                            } label: {
-                                RowView(row: character)
-                            }
-                            
-                        }
+                ForEach(data.fetched, id: \.id) { character in
+                    NavigationLink {
+                        DetailView(data: character)
+                    } label: {
+                        RowView(row: character)
                     }
-                    if data.offset == data.fetched.count && data.searchQuery.isEmpty {
-                        ProgressView()
-                            .padding(.vertical)
-                            .onAppear {
-                                print("fething new data")
-                                data.fetch()
-                            }
-                    } else {
-                        GeometryReader { reader -> Color in
-                            let minY = reader.frame(in: .global).minY
-                            let height = UIScreen.main.bounds.height / 1.3
-                            
-                            if !data.fetched.isEmpty && minY < height {
-                                DispatchQueue.main.async {
-                                    data.offset = data.fetched.count
-                                }
-                            }
-                            return Color.clear
+                    
+                }
+                if data.offset == data.fetched.count && data.searchQuery.isEmpty {
+                    ProgressView()
+                        .padding(.vertical)
+                        .onAppear {
+                            print("fething new data")
+                            data.fetch()
                         }
-                        .frame(width: 20, height: 20)
+                } else {
+                    GeometryReader { reader -> Color in
+                        let minY = reader.frame(in: .global).minY
+                        let height = UIScreen.main.bounds.height / 1.3
+                        
+                        if !data.fetched.isEmpty && minY < height {
+                            DispatchQueue.main.async {
+                                data.offset = data.fetched.count
+                            }
+                        }
+                        return Color.clear
                     }
+                    .frame(width: 20, height: 20)
                 }
             }
             .navigationTitle("Marvel")
