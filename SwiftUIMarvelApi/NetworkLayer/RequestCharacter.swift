@@ -17,7 +17,15 @@ struct RequestCharacter: RequestProtocol {
         let ts = String(Date().timeIntervalSince1970)
         let hash = MD5(data: "\(ts)\(Marvel.privateKey)\(Marvel.publicKey)")
         let originalQuery = query.replacingOccurrences(of: " ", with: "%20")
-        let url = "\(Marvel.serverURL)\(Marvel.requestCharacters)?nameStartsWith=\(originalQuery)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
+        let url = "\(Marvel.serverURL)\(Marvel.requestCharacters)?limit=50&nameStartsWith=\(originalQuery)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
+        
+        return url
+    }
+    
+    static func createURLforStart(offset: Int) -> String {
+        let ts = String(Date().timeIntervalSince1970)
+        let hash = MD5(data: "\(ts)\(Marvel.privateKey)\(Marvel.publicKey)")
+        let url = "\(Marvel.serverURL)\(Marvel.requestCharacters)?limit=50&offset=\(offset)&ts=\(ts)&apikey=\(Marvel.publicKey)&hash=\(hash)"
         
         return url
     }
@@ -58,6 +66,12 @@ struct RequestCharacter: RequestProtocol {
     static func fetch(searchQuery: String, fetchedCharacters: [Item], completion: @escaping ([RowProtocol]) -> Void) {
         
         let url = createURL(query: searchQuery)
+        fetchData(url: url, completion: completion)
+    }
+    
+    static func fetchForStart(offset: Int, fetchedCharacters: [Item], completion: @escaping ([RowProtocol]) -> Void) {
+        
+        let url = createURLforStart(offset: offset)
         fetchData(url: url, completion: completion)
     }
 }

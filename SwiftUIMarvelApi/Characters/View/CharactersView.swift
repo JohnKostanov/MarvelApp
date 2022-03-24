@@ -30,11 +30,7 @@ struct CharactersView: View {
                 }
                 .padding()
                 if let characters = data.fetched {
-                    if characters.isEmpty {
-                        // No results...
-                        Text("No found results")
-                            .padding(.top, 20)
-                    } else {
+                  if !characters.isEmpty {
                         // Displaying results
                         ForEach(characters, id: \.id) { character in
                             NavigationLink {
@@ -45,11 +41,26 @@ struct CharactersView: View {
                             
                         }
                     }
-                } else {
-                    if data.searchQuery != "" {
-                        // Loading wait...
+                    if data.offset == data.fetched.count && data.searchQuery.isEmpty {
                         ProgressView()
-                            .padding(.top, 20)
+                            .padding(.vertical)
+                            .onAppear {
+                                print("fething new data")
+                                data.fetch()
+                            }
+                    } else {
+                        GeometryReader { reader -> Color in
+                            let minY = reader.frame(in: .global).minY
+                            let height = UIScreen.main.bounds.height / 1.3
+                            
+                            if !data.fetched.isEmpty && minY < height {
+                                DispatchQueue.main.async {
+                                    data.offset = data.fetched.count
+                                }
+                            }
+                            return Color.clear
+                        }
+                        .frame(width: 20, height: 20)
                     }
                 }
             }

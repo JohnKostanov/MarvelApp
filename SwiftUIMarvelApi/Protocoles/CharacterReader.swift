@@ -11,8 +11,13 @@ import Combine
 class CharacterReader: ObservableObject {
     
     @Published var searchQuery = ""
+    @Published var offset: Int = 0
     
     var searchCancellable: AnyCancellable? = nil
     
-    @Published var fetched: [RowProtocol] = []    
+    @Published var fetched: [RowProtocol] = []
+    
+    func fetch() {
+        // Override
+    }
 }

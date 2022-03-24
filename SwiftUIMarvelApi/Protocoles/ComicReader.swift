@@ -14,6 +14,6 @@ class ComicReader: ObservableObject {
     @Published var offset: Int = 0
     
     func fetchComics() {
-        
+        // Override
     }
 }

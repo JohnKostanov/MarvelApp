@@ -16,8 +16,9 @@ class CharacterViewModel: CharacterReader {
             .debounce(for: 0.6, scheduler: RunLoop.main)
             .sink(receiveValue: { str in
                 if str == "" {
-                    // reset Data...
-                    self.fetched = []
+                    RequestCharacter.fetchForStart(offset: self.offset, fetchedCharacters: self.fetched) { characters in
+                        self.fetched = characters
+                    }
                 } else {
                     // search Data...
                     RequestCharacter.fetch(searchQuery: self.searchQuery, fetchedCharacters: self.fetched) { characters in
@@ -25,5 +26,13 @@ class CharacterViewModel: CharacterReader {
                     }
                 }
             })
+    }
+    
+    override func fetch() {
+        if searchQuery.isEmpty {
+            RequestCharacter.fetchForStart(offset: self.offset, fetchedCharacters: fetched) { characters in
+                self.fetched.append(contentsOf: characters)
+            }
+        }
     }
 }

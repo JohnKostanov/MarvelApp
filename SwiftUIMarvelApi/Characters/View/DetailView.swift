@@ -72,11 +72,6 @@ struct DetailView: View {
                         Color.white
                             .opacity(0.4)
                     }
-                } else {
-                    RadialGradient(gradient: Gradient(colors: [.red, .black]),
-                                   center: .center,
-                                   startRadius: 2,
-                                   endRadius: 600)
                 }
             }
         )
