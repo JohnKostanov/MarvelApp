@@ -12,22 +12,22 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                AsyncImage(url: URL(string: data.largeImagePath)) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    } else if phase.error != nil {
-                        Text("There was an error loading the image.")
-                    } else {
-                        ProgressView()
-                    }
-                }
-                .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 400, idealHeight: 600, maxHeight: .infinity, alignment: .center)
-                .cornerRadius(8)
-            }
             ScrollView(.vertical, showsIndicators: true) {
+                ZStack {
+                    AsyncImage(url: URL(string: data.largeImagePath)) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        } else if phase.error != nil {
+                            Text("There was an error loading the image.")
+                        } else {
+                            ProgressView()
+                        }
+                    }
+                    .frame(minWidth: 200, idealWidth: 300, maxWidth: .infinity, minHeight: 400, idealHeight: 600, maxHeight: .infinity, alignment: .center)
+                    .cornerRadius(8)
+                }
                 VStack(alignment: .leading, spacing: 0) {
                     if let name = data.name {
                         Text(name)
