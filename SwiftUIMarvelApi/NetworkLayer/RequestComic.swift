@@ -13,6 +13,7 @@ class RequestComic: RequestProtocol {
     typealias Item = RowProtocol
     typealias Settings = Int
     
+    //private
     static func createURL(query: Settings) -> String {
         let ts = String(Date().timeIntervalSince1970)
         let hash = MD5(data: "\(ts)\(Marvel.privateKey)\(Marvel.publicKey)")
